@@ -2,12 +2,12 @@
 A Transport for London (TfL) application that models and oversees specific areas of the TfL overground and tube network systems.
 UML Design for Version 1:
 
-Figure 1: UML diagram of version 1 (Without any library)
+Figure 1: UML diagram of TFL APP
 
 <img width="821" alt="vp1" src="https://github.com/user-attachments/assets/f9620935-51e1-4479-b040-3527cbfd2c12" />
 
 
-Version 1 follows the MVC design pattern, which stands for Models, Views, and Controllers.
+This application follows the MVC design pattern, which stands for Models, Views, and Controllers.
 For models, we have custom implementations of a dictionary, list, priority queue, as well as representations for edges, lines, and stations. Each line possesses a collection of many stations, each connected to another to form edges.
 Regarding the relationships between these models, a composition seemed rational, as each line is composed of connected stations, each formed of stations. To enable collections and ensure avoidance of generic libraries, custom implementations of a list and a dictionary were utilised. Additionally, a priority queue was implemented for solving shortest path problems, to store nodes to visit.
 As for the views, both a customer and an engineering menu were implemented. The customer view allows the user to search for the shortest path from a start station to a finish station. On the other hand, the engineering menu is more complex, offering options to manage stations where the user can add delays, remove delays, close or open an edge, view stations, or access traffic information.
@@ -40,8 +40,8 @@ CustomList: a generic, dynamic array implementation in C#. It starts with an ini
 CustomDictionary: a generic dictionary implementation using two CustomList<T> instances: one for keys and one for values. It ensures each key is unique and throws exceptions for null keys or duplicate keys during the Add operation. Lookup operations retrieve values based on key index, and the dictionary allows direct value assignment to existing keys via the indexer. If a key does not exist, the indexer adds the key-value pair. This implementation provides ContainsKey to check for the presence of a key and uses IndexOfKey for finding the index of a key within the keys list. The dictionary maintains a count of key-value pairs that is accessible through the Count property. This custom structure is tailored to manage key-value associations while leveraging the dynamic capabilities of the CustomList<T> for storage and operations.
 The CustomPriorityQueue:  a generic implementation of a priority queue where each element is associated with a priority, and these priorities determine the order of element retrieval. The queue is backed by a CustomList<(TElement element, TPriority priority)>, maintaining a heap structure to ensure that the element with the highest priority (or lowest depending on the comparison logic) is always at the front. The Enqueue method adds elements to the heap and ensures the heap property is maintained by bubbling up the newly added element if its priority is higher than its parent's. Conversely, the Dequeue method removes and returns the element with the highest priority, then re-adjusts the heap by moving the last element to the root and letting it sink down to its proper position, maintaining the heap property.
 
-Program Testing for Version 1:
-Version 1 of the TfL application underwent rigorous testing procedures to ensure its functionality, reliability, and adherence to requirements. The testing process encompassed various methodologies, including unit testing, integration testing, and acceptance testing.
+Program Testing:
+This version of the TfL application underwent rigorous testing procedures to ensure its functionality, reliability, and adherence to requirements. The testing process encompassed various methodologies, including unit testing, integration testing, and acceptance testing.
  
 Unit Testing:
  
@@ -53,7 +53,7 @@ Integration testing was performed to assess the interaction and integration betw
  
 Acceptance Testing:
  
-Acceptance testing was carried out to evaluate the overall compliance of Version 1 with the specified requirements and user expectations. Test scenarios were designed to simulate real-world usage scenarios, allowing stakeholders to validate the application's suitability for its intended purpose. Feedback from stakeholders and end-users was incorporated to refine the application further.
+Acceptance testing was carried out to evaluate the overall compliance of this applicaiton with the specified requirements and user expectations. Test scenarios were designed to simulate real-world usage scenarios, allowing stakeholders to validate the application's suitability for its intended purpose. Feedback from stakeholders and end-users was incorporated to refine the application further.
  
 Testing Cases:
  
@@ -170,11 +170,11 @@ Status: ✅ Pass
 
 Big-O Analysis:
 
-Shortest Path Algorithm: Version 1 utilises Dijkstra's algorithm to find the shortest path between two stations in the metro network. The time complexity of Dijkstra's algorithm is O((V + E) log V), where V represents the number of vertices (stations) and E represents the number of edges (connections between stations). This algorithm efficiently determines the shortest path by exploring neighbouring stations based on their connection times.
+Shortest Path Algorithm: This application utilises Dijkstra's algorithm to find the shortest path between two stations in the metro network. The time complexity of Dijkstra's algorithm is O((V + E) log V), where V represents the number of vertices (stations) and E represents the number of edges (connections between stations). This algorithm efficiently determines the shortest path by exploring neighbouring stations based on their connection times.
 Custom Data Structures: CustomList, CustomDictionary, and CustomPriorityQueue are employed to manage station, line, edge, and graph data structures efficiently. These custom data structures mimic the functionality of their counterparts in the System.Collections.Generic namespace, with comparable time complexities for common operations.
 
-Version 1 Execution Time:
-For smaller metro networks with fewer stations and connections, Version 1 demonstrated competitive performance, with route calculations typically completed within the range of 10 to 50 milliseconds.
-However, as the network size increased, the execution time of Version 1 also grew proportionally. For networks with hundreds or thousands of stations, route calculations could take anywhere from 100 to 500 milliseconds or more, depending on the complexity of the network and the distance between stations.
+Execution Time:
+For smaller metro networks with fewer stations and connections, this applciaiton demonstrated competitive performance, with route calculations typically completed within the range of 10 to 50 milliseconds.
+However, as the network size increased, the execution time of the application also grew proportionally. For networks with hundreds or thousands of stations, route calculations could take anywhere from 100 to 500 milliseconds or more, depending on the complexity of the network and the distance between stations.
 
 
