@@ -30,14 +30,19 @@ Classes:
 Station, Line, Edge, and StationGraph
 The Station, Line, Edge and StationGraph classes realise the Metro map graph concept and play the following roles respectively.
 Station: class for storing station information. It is the Role of the Node in the graph structure. Each Station object has a property called Edges, which holds a list of edges from that station to other stations directly connected to it. This manages the connection information from each station to the other stations and acts as an adjacency list.
+
 Edge: a class that stores information between stations, with information on stations at both ends, time taken, status and delay state. It is the Edge of the graph structure. It has a weight called Time to realise a weighted directed graph. It also has delay information and information such as whether the station is closed or not as attributes to meet the requirements of the application.
+
 Line: a class that stores information on lines, with information on line names and directions.
 StationGraph: a class that stores information on the entire metro map, including information on all stations, lines, and edges. It has a method to search for the shortest route using the Dijkstra method. 
 
 CustomList, CustomDictionary, and CustomPriorityQueue
 The CustomList and CustomDictionary classes play a more fundamental role in realising the four graph structures 'Station, Line, Edge and StationGraph' and CustomPriorityQueue is a generic class required to realise the algorithm for finding the shortest path in a StationGraph.
+
 CustomList: a generic, dynamic array implementation in C#. It starts with an initial capacity of four items and expands by doubling its size when more space is needed. Key functionalities include adding and removing items, checking for item existence, and accessing items by index. Elements can be added to the list using Add(T item), which automatically increases the array size when necessary. Items can be removed either directly by item via Remove(T item) or by index with RemoveAt(int index). The list supports iteration and provides utility methods such as Clear(), Contains(T item), Reverse(), and searching with FirstOrDefault(Func<T, bool> predicate). 
+
 CustomDictionary: a generic dictionary implementation using two CustomList<T> instances: one for keys and one for values. It ensures each key is unique and throws exceptions for null keys or duplicate keys during the Add operation. Lookup operations retrieve values based on key index, and the dictionary allows direct value assignment to existing keys via the indexer. If a key does not exist, the indexer adds the key-value pair. This implementation provides ContainsKey to check for the presence of a key and uses IndexOfKey for finding the index of a key within the keys list. The dictionary maintains a count of key-value pairs that is accessible through the Count property. This custom structure is tailored to manage key-value associations while leveraging the dynamic capabilities of the CustomList<T> for storage and operations.
+
 The CustomPriorityQueue:  a generic implementation of a priority queue where each element is associated with a priority, and these priorities determine the order of element retrieval. The queue is backed by a CustomList<(TElement element, TPriority priority)>, maintaining a heap structure to ensure that the element with the highest priority (or lowest depending on the comparison logic) is always at the front. The Enqueue method adds elements to the heap and ensures the heap property is maintained by bubbling up the newly added element if its priority is higher than its parent's. Conversely, the Dequeue method removes and returns the element with the highest priority, then re-adjusts the heap by moving the last element to the root and letting it sink down to its proper position, maintaining the heap property.
 
 Program Testing:
